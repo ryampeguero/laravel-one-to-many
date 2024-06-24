@@ -10,6 +10,9 @@
                 <div class="mb-3">
                     <h3>{{ $project->title }}</h3>
                 </div>
+                <div class="mb-3">
+                    <h5>Tipologia: {{ $project->type?->name }}</h5>
+                </div>
 
                 <div class="mb-3">
                     <p>{{ $project->description }}</p>

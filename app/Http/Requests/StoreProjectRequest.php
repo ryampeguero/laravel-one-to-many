@@ -23,7 +23,8 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => ['unique:projects', 'min:5'],
-            'description' => ['nullable', 'min:10', 'max:5000']
+            'description' => ['nullable', 'min:10', 'max:5000'],
+            'type_id' => ['nullable']
         ];
     }
 }

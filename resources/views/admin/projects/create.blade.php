@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @include('partials.errors')
-        
+
         <h1>Crea nuovo progetto</h1>
         <div class="row">
             <div class="col-2"></div>
@@ -15,10 +15,18 @@
                         <input type="text" class="form-control" id="title" name="title">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="type_id">Tipologia</label>
+                        <select class="form-select" name="type_id" id="type_id">
+                            <option value="">Seleziona</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <input type="text" class="form-control" id="description" name="description">
                         <input type="hidden" name="slug">
-                        
                     </div>
                     <button type="submit" class="btn btn-primary">Salva</button>
                 </form>
