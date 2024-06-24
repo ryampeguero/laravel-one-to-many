@@ -37,12 +37,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $newProject = new Project();
+        
         $data = $request->validated();
         if($request->hasFile('image')){
             $image_path = Storage::put('image', $request->image);
+            $newProject->image_path = $image_path;
         } 
+
         $data['slug'] = Str::slug($data['title']);
-        $newProject->image_path = $image_path;
         $newProject->fill($data);
         $newProject->save();
         return redirect()->route('admin.projects.index');
@@ -71,11 +73,13 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
+        // dd($request->validated());
+        
         if($request->hasFile('image')){
             $image_path = Storage::put('image', $request->image);
+            $project->image_path = $image_path;    
         } 
-        $project->image_path = $image_path;
+        $data['slug'] = Str::slug($data['title']);
         $project->update($data);
         return redirect()->route('admin.projects.show', ['project' => $project->slug])->with('message', 'Project ' . $project->title . ' è stato modificato');
     }

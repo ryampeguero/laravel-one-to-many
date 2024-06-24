@@ -18,6 +18,11 @@
                     <p>{{ $project->description }}</p>
                 </div>
 
+                @if ($project->image_path)
+                    <div class="mb-3">
+                        <img src="{{ asset('storage/' . $project->image_path) }}" alt="">
+                    </div>
+                @endif
             </div>
             <div class="col-2"></div>
         </div>
