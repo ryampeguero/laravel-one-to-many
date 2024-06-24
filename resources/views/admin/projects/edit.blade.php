@@ -14,12 +14,20 @@
                         <label for="title" class="form-label">Titolo</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $project->title) }}">
                     </div>
-                    <select class="form-select" name="type_id" id="type_id">
-                        <option value="">Seleziona</option>
-                        @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="mb-3">
+                        <select class="form-select" name="type_id" id="type_id">
+                            <option value="">Seleziona</option>
+                            @foreach ($types as $type)
+                                <option @selected($project->type_id == $type->id) value="{{ $type->id }}">{{ $type->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <h5>Preview immagine</h5>
+                        <img src="{{asset('storage/'. $project->image_path)}}" alt="">
+                    </div>
+
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <input type="text" class="form-control" id="description" name="description"

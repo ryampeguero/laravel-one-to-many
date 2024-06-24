@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <form action="{{ route('admin.projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
@@ -19,9 +19,13 @@
                         <select class="form-select" name="type_id" id="type_id">
                             <option value="">Seleziona</option>
                             @foreach ($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                <option @selected(old('type_id') === $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="image">Carica immagine</label>
+                        <input class="form-control" type="file" name="image" id="image">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>

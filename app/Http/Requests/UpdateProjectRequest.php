@@ -25,7 +25,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'title' => ['min:5', Rule::unique('projects')->ignore($this->project)], //Lo prende grazie al dipendcy injection
             'description' => ['nullable', 'min:10', 'max:5000'],
-            'type_id' => ['nullable']
+            'type_id' => ['nullable'],
+            'image' => ['nullable']
         ];
     }
 }
