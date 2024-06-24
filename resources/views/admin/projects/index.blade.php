@@ -12,6 +12,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Titolo</th>
+                            <th scope="col">Tipologia</th>
                             <th scope="col">Slug</th>
                             <th scope="col">Azioni</th>
                         </tr>
@@ -21,6 +22,7 @@
                             <tr>
                                 <th scope="row">{{ $project->id }}</th>
                                 <td>{{ $project->title }}</td>
+                                <td>{{ $project->type?->name }}</td>
                                 <td>{{ $project->slug }}</td>
                                 <td class="d-flex gap-3">
                                     <a class="btn btn-primary" href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">
