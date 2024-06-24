@@ -23,9 +23,18 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label" for="image">Carica immagine</label>
                         <input class="form-control" type="file" name="image" id="image">
+                    </div>
+
+                    <div class="mb-3" >
+                        <h5>Preview immagine</h5>
+                        <div id="preview">
+                            
+                        </div>
+                        <button class="btn btn-success" id="show-preview">Mostra preview</button>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
